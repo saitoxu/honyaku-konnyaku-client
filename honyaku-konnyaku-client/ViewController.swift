@@ -44,6 +44,10 @@ class ViewController: UIViewController {
             recognitionRequest?.endAudio()
             button.isEnabled = false
             button.setTitle("停止中", for: .disabled)
+            Alamofire.request("http://example.com")
+                .responseString { response in
+                    print("Response String: \(response.result.value)")
+                }
         } else {
             try! startRecording()
             button.setTitle("音声認識を中止", for: [])
