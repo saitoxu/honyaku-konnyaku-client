@@ -25,7 +25,7 @@
                                 <rect key="frame" x="170" y="304.5" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
-                                    <action selector="tappedStartButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4m2-jf-mOB"/>
+                                    <action selector="start:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d5x-bD-Qnc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBe-dF-wAg">
@@ -44,7 +44,7 @@
                                 </constraints>
                                 <state key="normal" title="Translate"/>
                                 <connections>
-                                    <action selector="translate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ttd-H8-LOa"/>
+                                    <action selector="translate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oxN-Tu-9s6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -61,9 +61,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="button" destination="yI2-dL-K9F" id="XRA-ve-ket"/>
-                        <outlet property="label" destination="tBe-dF-wAg" id="EE3-Vf-3x3"/>
-                        <outlet property="translateButton" destination="vgJ-H0-CqP" id="SmA-YU-Ed0"/>
+                        <outlet property="label" destination="tBe-dF-wAg" id="9ov-1J-o8l"/>
+                        <outlet property="startBtn" destination="yI2-dL-K9F" id="eYy-Sl-cCV"/>
+                        <outlet property="translateBtn" destination="vgJ-H0-CqP" id="S9i-x4-uKq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

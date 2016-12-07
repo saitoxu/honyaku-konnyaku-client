@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  honyaku-konnyaku-client
-//
-//  Created by Yosuke SAITO on 2016/11/19.
-//  Copyright © 2016年 saitoxu. All rights reserved.
-//
-
 import UIKit
 import Alamofire
 import Speech
@@ -18,14 +10,14 @@ class ViewController: UIViewController {
     private let audioEngine = AVAudioEngine()
 
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var translateButton: UIButton!
+    @IBOutlet weak var startBtn: UIButton!
+    @IBOutlet weak var translateBtn: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         speechRecognizer.delegate = self
-        button.isEnabled = false
+        startBtn.isEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,20 +27,18 @@ class ViewController: UIViewController {
 
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
         requestRecognizerAuthorization()
     }
 
-    @IBAction func tappedStartButton(_ sender: Any) {
+    @IBAction func start(_ sender: Any) {
         if audioEngine.isRunning {
             audioEngine.stop()
             recognitionRequest?.endAudio()
-            button.isEnabled = false
-            button.setTitle("Stopping", for: .disabled)
-            self.label.text = ""
+            startBtn.isEnabled = false
+            startBtn.setTitle("Stopping", for: .disabled)
         } else {
             try! startRecording()
-            button.setTitle("Clear", for: [])
+            startBtn.setTitle("Clear", for: [])
         }
     }
 
@@ -72,19 +62,19 @@ class ViewController: UIViewController {
 
                 switch authStatus {
                 case .authorized:
-                    self.button.isEnabled = true
+                    self.startBtn.isEnabled = true
 
                 case .denied:
-                    self.button.isEnabled = false
-                    self.button.setTitle("Access denied", for: .disabled)
+                    self.startBtn.isEnabled = false
+                    self.startBtn.setTitle("Access denied", for: .disabled)
 
                 case .restricted:
-                    self.button.isEnabled = false
-                    self.button.setTitle("Access restricted", for: .disabled)
+                    self.startBtn.isEnabled = false
+                    self.startBtn.setTitle("Access restricted", for: .disabled)
 
                 case .notDetermined:
-                    self.button.isEnabled = false
-                    self.button.setTitle("No permission", for: .disabled)
+                    self.startBtn.isEnabled = false
+                    self.startBtn.setTitle("No permission", for: .disabled)
                 }
             }
         }
@@ -122,8 +112,9 @@ class ViewController: UIViewController {
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
 
-                self.button.isEnabled = true
-                self.button.setTitle("Start", for: [])
+                self.startBtn.isEnabled = true
+                self.startBtn.setTitle("Start", for: [])
+                self.label.text = ""
             }
         }
 
@@ -151,11 +142,11 @@ class ViewController: UIViewController {
 extension ViewController: SFSpeechRecognizerDelegate {
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
-            button.isEnabled = true
-            button.setTitle("Start", for: [])
+            startBtn.isEnabled = true
+            startBtn.setTitle("Start", for: [])
         } else {
-            button.isEnabled = false
-            button.setTitle("Clear", for: .disabled)
+            startBtn.isEnabled = false
+            startBtn.setTitle("Clear", for: .disabled)
         }
     }
 }
